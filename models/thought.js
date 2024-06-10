@@ -1,4 +1,6 @@
+/* eslint-disable import/extensions */
 import { Schema, model } from 'mongoose';
+import reactionSchema from './reaction.js';
 
 const thoughtSchema = new Schema({
     thoughtText: {
@@ -15,12 +17,7 @@ const thoughtSchema = new Schema({
         type: String,
         required: true
     },
-    reactions: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Reaction'
-        }
-    ]
+    reactions: [reactionSchema]
 },
 {
     toJSON: {

@@ -1,5 +1,6 @@
+/* eslint-disable import/extensions */
 import { Schema, Types } from 'mongoose';
-import dateFormat from '../libs/mongoose-getters/dateFormat';
+import dateFormat from '../libs/mongoose-getters/dateFormat.js';
 
 const reactionSchema = new Schema({
     reactionId: {
