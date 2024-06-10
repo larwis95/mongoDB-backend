@@ -1,7 +1,7 @@
+/* eslint-disable import/extensions */
 import Express from 'express';
-import db from './config/connection';
-
-const routes = require('./routes');
+import db from './config/connection.js';
+import routes from './routes/index.js';
 
 const PORT = 3001 || process.env.PORT;
 const app = Express();
