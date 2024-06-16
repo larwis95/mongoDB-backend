@@ -1,6 +1,6 @@
 /* eslint-disable import/extensions */
 import express from 'express';
-import { User } from '../models/index.js';
+import { User, Thought } from '../models/index.js';
 
 const router = express.Router();
 
@@ -55,7 +55,8 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     try {
         const userData = await User.findOneAndDelete({ _id: req.params.id });
-        res.json(userData);
+        const thoughtData = await Thought.deleteMany({ _id: { $in: userData.thoughts } });
+        res.json([userData, thoughtData]);
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
