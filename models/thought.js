@@ -1,6 +1,7 @@
 /* eslint-disable import/extensions */
 import { Schema, model } from "mongoose";
 import reactionSchema from "./reaction.js";
+import dateFormat from "../libs/mongoose-getters/dateFormat.js";
 
 const thoughtSchema = new Schema(
   {
@@ -13,6 +14,7 @@ const thoughtSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
+      get: (createdAtVal) => dateFormat(createdAtVal),
     },
     username: {
       type: String,
@@ -27,9 +29,10 @@ const thoughtSchema = new Schema(
   {
     toJSON: {
       virtuals: true,
+      getters: true,
     },
     id: false,
-  },
+  }
 );
 
 thoughtSchema.virtual("reactionCount").get(function () {

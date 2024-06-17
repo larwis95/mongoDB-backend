@@ -6,6 +6,7 @@ import { Thought, User } from "../models/index.js";
 const router = express.Router();
 
 // GET all thoughts
+//
 router.get("/", async (req, res) => {
   try {
     const thoughtData = await Thought.find().populate({
