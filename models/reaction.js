@@ -1,33 +1,34 @@
 /* eslint-disable import/extensions */
-import { Schema, Types } from 'mongoose';
-import dateFormat from '../libs/mongoose-getters/dateFormat.js';
+import { Schema, Types } from "mongoose";
+import dateFormat from "../libs/mongoose-getters/dateFormat.js";
 
-const reactionSchema = new Schema({
+const reactionSchema = new Schema(
+  {
     reactionId: {
-        type: Schema.Types.ObjectId,
-        default: () => new Types.ObjectId()
+      type: Schema.Types.ObjectId,
+      default: () => new Types.ObjectId(),
     },
     reactionBody: {
-        type: String,
-        required: true,
-        maxlength: 280
+      type: String,
+      required: true,
+      maxlength: 280,
     },
     username: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     createdAt: {
-        type: Date,
-        default: Date.now,
-        get: (createdAtVal) => dateFormat(createdAtVal)
-    }
-},
-{
-    toJSON: {
-        getters: true
+      type: Date,
+      default: Date.now,
+      get: (createdAtVal) => dateFormat(createdAtVal),
     },
-    id: false
-}
+  },
+  {
+    toJSON: {
+      getters: true,
+    },
+    id: false,
+  },
 );
 
 export default reactionSchema;
