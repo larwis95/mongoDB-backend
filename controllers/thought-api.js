@@ -59,8 +59,8 @@ router.put("/:id", async (req, res) => {
   try {
     const thoughtData = await Thought.findOneAndUpdate(
       { _id: req.params.id },
-      { new: true },
-      req.body
+      req.body,
+      { new: true }
     );
     res.json(thoughtData);
   } catch (err) {
